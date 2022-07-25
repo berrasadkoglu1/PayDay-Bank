@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ANA SAYFA</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+<style type="text/css">
+span {
+	display: inline-block;
+	width: 200px;
+	text-align: left;
+}
+</style>
+<style>
+h4 {
+	border-bottom: 1px solid #ddd;
+	height: 60px;
+	text-align: left;
+	margin-bottom: 0px;
+}
+</style>
+
+</head>
+
+
+</head>
+<body>
+	<br>
+	<h4>
+		Products Prototype
+		<div style="float: right; margin-top: 0px; margin-right: 20px;">
+			<a href="/logout"> <img
+				src="https://img.icons8.com/metro/50/000000/exit.png" width="35"
+				height="35"></a>
+	</h4>
+
+	<div class="account-container">
+		<div class="sidebar">
+
+			<ul class="menu">
+				<li><a href="/products">Products</a></li>
+				<li><a href="/profile">Profile</a></li>
+
+			</ul>
+			
+		</div>
+
+
+		<div align="center">
+			<p
+				style="text-align: center; margin-right: 20px; margin-left: 1500px; margin-top: 200px;">
+			<form action="#" th:action="@{/profile}" 
+				th:object="${newUser}">
+
+				 <span>Full name:</span><span><input type="text" name="name" id="name"
+					size="30" th:field="*{Full_Name}" maxlength="20" required /></span><br> <br> 
+				<span>Email:</span> <span><input type="text" name="name"
+					readonly="readonly" th:field="*{Email_Address}" size="30" maxlength="20"  id="name" /></span><br><br> 
+				<span>Title:</span><span> <input type="text" name="name"
+					id="name" size="30" th:field="*{Title}" maxlength="20" required /> </span><br><br>
+					 <div style="margin-left:-1400px; margin-top:350px">
+					
+				<br> <input type="submit" value="Save"/> <br> <br> </div>
+
+					 
+				
+				<br> <br> <br> <br>
+			</form>
+		</div>
+	
+
+
+
+
+	</div>
+
+
+
+
+
+	<style type="text/css">
+* {
+	box-sizing: border-box;
+}
+
+body, html {
+	padding: 0;
+	margin: 0;
+}
+
+.account-container {
+	display: flex;
+}
+
+.sidebar {
+	flex-shrink: 0;
+	position: relative;
+	border-right: 1px solid #ddd;
+	width: 250px;
+	min-height: 91vh;
+	text-align: center;
+}
+
+.sidebar .menu {
+	padding: 0;
+}
+
+.sidebar .menu li {
+	list-style: none;
+}
+
+.sidebar .menu li a {
+	text-decoration: none;
+	color: black;
+	display: block;
+	padding: 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+.sidebar .menu li a:hover {
+	background-color: #f4f4f4;
+}
+
+.sidebar .menu li:first-child a {
+	border-top: 1px solid #ddd;
+}
+
+.sidebar .sidebar-bottom {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	padding: 30px 50px;
+	justify-content: space-between;
+}
+
+.content {
+	min-width: 100vh;
+	overflow-y: auto;
+	flex: 1;
+	padding: 50px;
+}
+
+.accounts {
+	text-align: center;
+	justify-content: space-between;
+	display: flex;
+	align-items: center;
+	user-select: none;
+}
+
+.account {
+	display: none;
+}
+
+.account.active {
+	display: block;
+}
+
+.arrow {
+	padding: 10px;
+	cursor: pointer;
+}
+
+.account-title {
+	margin-top: 30px
+}
+</style>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var activeAccount = 0;
+			visibleActiveAccount()
+			function visibleActiveAccount() {
+				$('.accounts .account').removeClass('active');
+				$('.accounts .account').eq(activeAccount).addClass('active');
+			}
+			function next() {
+				var totalAccountCount = $('.accounts .account').length;
+				if (activeAccount == totalAccountCount - 1) {
+					activeAccount = 0;
+				} else {
+					activeAccount++;
+				}
+				visibleActiveAccount()
+			}
+			function prev() {
+				var totalAccountCount = $('.accounts .account').length;
+				if (activeAccount == 0) {
+					activeAccount = totalAccountCount - 1;
+				} else {
+					activeAccount--;
+				}
+				visibleActiveAccount()
+			}
+			$('.arrow.right').click(function() {
+				next()
+			})
+			$('.arrow.left').click(function() {
+				prev()
+			})
+		});
+	</script>
+
+</body>
+</html>
+
+
+
