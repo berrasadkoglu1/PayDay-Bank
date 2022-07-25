@@ -100,7 +100,7 @@ public  class AppController {
     
 
 
-@GetMapping("/products01{id}")
+@GetMapping("/products01/{id}")
 public String viewProduct01Page(@PathVariable("id") Long id,Model model, @ModelAttribute("newProductDetails") product newProductDetails) {
 	System.out.print(id);
 	product ProductDetail=null;
