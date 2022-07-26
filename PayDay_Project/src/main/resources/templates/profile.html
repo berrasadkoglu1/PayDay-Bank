@@ -46,40 +46,31 @@ h4 {
 				<li><a href="/profile">Profile</a></li>
 
 			</ul>
-			
+
 		</div>
 
 
 		<div align="center">
 			<p
 				style="text-align: center; margin-right: 20px; margin-left: 1500px; margin-top: 200px;">
-			<form action="#" th:action="@{/profile}" 
-				th:object="${newUser}">
+			<form action="#" th:action="@{/profile}" th:object="${newUser}">
 
-				 <span>Full name:</span><span><input type="text" name="name" id="name"
-					size="30" th:field="*{Full_Name}" maxlength="20" required /></span><br> <br> 
-				<span>Email:</span> <span><input type="text" name="name"
-					readonly="readonly" th:field="*{Email_Address}" size="30" maxlength="20"  id="name" /></span><br><br> 
-				<span>Title:</span><span> <input type="text" name="name"
-					id="name" size="30" th:field="*{Title}" maxlength="20" required /> </span><br><br>
-					 <div style="margin-left:-1400px; margin-top:350px">
-					
-				<br> <input type="submit" value="Save"/> <br> <br> </div>
+				<span>Full name:</span><span><input type="text" name="name"
+					id="name" size="30" th:field="*{Full_Name}" maxlength="20" required /></span><br>
+				<br> <span>Email:</span> <span><input type="text"
+					name="name" readonly="readonly" th:field="*{Email_Address}"
+					size="30" maxlength="20" id="name" /></span><br> <br> <span>Title:</span><span>
+					<input type="text" name="name" id="name" size="30"
+					th:field="*{Title}" maxlength="20" required />
+				</span><br> <br>
+				<div style="margin-left: -1400px; margin-top: 350px">
 
-					 
-				
+					<br> <input type="submit" value="Save" /> <br> <br>
+				</div>
 				<br> <br> <br> <br>
 			</form>
 		</div>
-	
-
-
-
-
 	</div>
-
-
-
 
 
 	<style type="text/css">

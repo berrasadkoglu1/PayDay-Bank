@@ -16,44 +16,39 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-  @Autowired
-  private DataSource datasource;
-  
-  @Bean
-  public UserDetailsService userDetailsService() {
-	  return new  CustomUserDetailsService();
-  }
-  
-  @Bean
-  public BCryptPasswordEncoder passwordEncoder() {
-	  return new BCryptPasswordEncoder();
-	  
-  }
-  @Bean
-  public DaoAuthenticationProvider authenticationProvider() {
-	  DaoAuthenticationProvider authProvider=new DaoAuthenticationProvider();
-	  authProvider.setUserDetailsService(userDetailsService());
-	  authProvider.setPasswordEncoder(passwordEncoder());
-	  return authProvider;
-  
-  }
-@Override
-protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-	auth.authenticationProvider(authenticationProvider());
-	
-}
+	@Autowired
+	private DataSource datasource;
 
-@Override
-protected void configure(HttpSecurity http) throws Exception {
-http.authorizeRequests()
-    .antMatchers("/").authenticated()
-    .anyRequest().permitAll()   
-    .and()
-    .formLogin()
-        .usernameParameter("email")
-        .defaultSuccessUrl("/products")
-        .permitAll()
-    .and()
-    .logout().logoutSuccessUrl("/").permitAll();
-}
+	@Bean
+	public UserDetailsService userDetailsService() {
+		return new CustomUserDetailsService();
+	}
+
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+
+	}
+
+	@Bean
+	public DaoAuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+		authProvider.setUserDetailsService(userDetailsService());
+		authProvider.setPasswordEncoder(passwordEncoder());
+		return authProvider;
+
+	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.authenticationProvider(authenticationProvider());
+
+	}
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/").authenticated().anyRequest().permitAll().and().formLogin()
+				.usernameParameter("email").defaultSuccessUrl("/products").permitAll().and().logout()
+				.logoutSuccessUrl("/").permitAll();
+	}
 }

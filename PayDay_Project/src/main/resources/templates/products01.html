@@ -46,7 +46,7 @@ h4 {
 				<li><a href="/profile">Profile</a></li>
 
 			</ul>
-			
+
 		</div>
 
 
@@ -56,28 +56,26 @@ h4 {
 			<form action="#" th:action="@{/products}"
 				th:object="${ProductDetails}">
 
-				 <span>Name:</span><span><input type="text" name="name" id="name"
-					 th:field="*{Name}" maxlength="20" required /></span><br> <br> 
+				<span>Name:</span><span><input type="text" name="name"
+					id="name" th:field="*{Name}" maxlength="20" required /></span><br> <br>
 				<span>Price:</span> <span><input type="text" name="name"
-					 th:field="*{Price}"   id="name" /></span><br><br> 
-				<span></span>
-					 <span><input type="checkbox" name="myBooleanVariable"
-					 th:field="*{available}"   id="name" /> Currently available </span>
-					<br><br> 
-					  
-				<span>
-              </span><span> <input type="text" name="name"
-					id="name"  th:field="*{Description}"  maxlength="500" required /> </span><br><br>
-					 <div style="margin-left:-1400px; margin-top:350px">
-					
-				<br> <input type="submit" value="Save"/> <br> <br> </div>
+					th:field="*{Price}" id="name" /></span><br> <br> <span></span>
+				<span><input type="checkbox" name="myBooleanVariable"
+					th:field="*{available}" id="name" /> Currently available </span> <br>
+				<br> <span> </span><span> <input type="text" name="name"
+					id="name" th:field="*{Description}" maxlength="500" required />
+				</span><br> <br>
+				<div style="margin-left: -1400px; margin-top: 350px">
 
-					 
-				
+					<br> <input type="submit" value="Save" /> <br> <br>
+				</div>
+
+
+
 				<br> <br> <br> <br>
 			</form>
 		</div>
-	
+
 
 
 
@@ -188,6 +186,7 @@ body, html {
 			}
 			function next() {
 				var totalAccountCount = $('.accounts .account').length;
+
 				if (activeAccount == totalAccountCount - 1) {
 					activeAccount = 0;
 				} else {

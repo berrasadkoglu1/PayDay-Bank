@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
  
 @Controller
 public  class AppController {
@@ -100,40 +99,41 @@ public  class AppController {
     
 
 
-@GetMapping("/products01/{id}")
-public String viewProduct01Page(@PathVariable("id") Long id,Model model, @ModelAttribute("newProductDetails") product newProductDetails) {
-	System.out.print(id);
-	product ProductDetail=null;
-	List<product> listProduct = productRepository.findAll();
- for (int i=0; i<listProduct.size();i++) {
-	 if(listProduct.get(i).getId()==id){
-		 ProductDetail=listProduct.get(i);
-	model.addAttribute("ProductDetails", ProductDetail); 
-	 }
- }
- if (!(ProductDetail.getName().equalsIgnoreCase(newProductDetails.getName())) &&newProductDetails.getName()!=null)
- {
-	 ProductDetail.setName(newProductDetails.getName());
- 
- }  
- if (!(ProductDetail.getPrice()==newProductDetails.getPrice())&&newProductDetails.getPrice()!=null)
- {
-	 ProductDetail.setPrice(newProductDetails.getPrice());
- 
- }  if (!(ProductDetail.getAvailable()==newProductDetails.getAvailable())&&newProductDetails.getAvailable()!=null)
- {
-	 ProductDetail.setAvailable(newProductDetails.getAvailable());
- 
- }  if (!(ProductDetail.getDescription().equalsIgnoreCase(newProductDetails.getDescription()))
-		 &&newProductDetails.getDescription()!=null)
- {
-	 ProductDetail.setDescription(newProductDetails.getDescription());
- 
- } 
- 
- product save=productRepository.save(ProductDetail);
+			@GetMapping("/products01/{id}")
+			public String viewProduct01Page(@PathVariable("id") Long id, Model model,
+					@ModelAttribute("newProductDetails") product newProductDetails) {
+				System.out.print(id);
+				product ProductDetail = null;
+				List<product> listProduct = productRepository.findAll();
+				for (int i = 0; i < listProduct.size(); i++) {
+					if (listProduct.get(i).getId() == id) {
+						ProductDetail = listProduct.get(i);
+						model.addAttribute("ProductDetails", ProductDetail);
+					}
+				}
+				if (!(ProductDetail.getName().equalsIgnoreCase(newProductDetails.getName()))
+						&& newProductDetails.getName() != null) {
+					ProductDetail.setName(newProductDetails.getName());
 
- 
-return "products01";
-	 }
+				}
+				if (!(ProductDetail.getPrice() == newProductDetails.getPrice())
+						&& newProductDetails.getPrice() != null) {
+					ProductDetail.setPrice(newProductDetails.getPrice());
+
+				}
+				if (!(ProductDetail.getAvailable() == newProductDetails.getAvailable())
+						&& newProductDetails.getAvailable() != null) {
+					ProductDetail.setAvailable(newProductDetails.getAvailable());
+
+				}
+				if (!(ProductDetail.getDescription().equalsIgnoreCase(newProductDetails.getDescription()))
+						&& newProductDetails.getDescription() != null) {
+					ProductDetail.setDescription(newProductDetails.getDescription());
+
+				}
+
+				product save = productRepository.save(ProductDetail);
+
+				return "products01";
+			}
 }
