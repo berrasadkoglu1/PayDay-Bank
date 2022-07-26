@@ -63,7 +63,7 @@ h4 {
 
 						<tr th:each="product: ${listProduct}">
 							<td><a th:href="@{/products01/(${product.id})}"
-								onclick="check()" th:text="${product.Name}">...</a></td>
+								 th:text="${product.Name}">...</a></td>
 							<td th:text="${product.Price}" /></td>
 							<td><input type="checkbox" name="myBooleanVariable"
 								readonly="readonly" th:checked="${product.Available}" /></td>
